@@ -1,0 +1,27 @@
+.reports-page {
+    background-color: #f8f9fa;
+  }
+  
+  .reports-buttons {
+    padding-top: 20px;
+  }
+  
+  .reports-button {
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+  }
+  
+  .reports-button:hover {
+    background-color: #5a6268;
+    color: white;
+  }
+  
+  .bg-danger {
+    background-color: #dc3545 !important;
+  }
+  

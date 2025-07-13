@@ -1,0 +1,117 @@
+/* Prevent overflow for the entire screen */
+html, body {
+    overflow: hidden;
+    height: 100%;
+}
+
+/* Style for each menu item button */
+.menu-item-btn {
+    width: 120px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+    background-color: #6c757d;
+    border-radius: 8px;
+    overflow: hidden;
+    white-space: normal;
+}
+
+/* Container for the item image, name, and price */
+.item-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Styling for the image within the button */
+.item-image {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 8px; /* Space between image and text */
+}
+
+/* Styling for the item name */
+.item-name {
+    font-weight: bold;
+    font-size: 0.9em;
+    line-height: 1.1em;
+    text-align: center;
+    color: #fff; /* Optional: White text for better contrast */
+}
+
+/* Styling for the item price */
+.item-price {
+    color: #ccc; /* Light grey color for subdued look */
+    font-size: 0.8em;
+    margin-top: 4px;
+    text-align: center;
+}
+
+
+/* Sidebar container, transparent */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    height: 100vh;
+    background-color: transparent; /* Remove background */
+    position: relative;
+}
+
+/* Toggle button styling */
+.toggle-button {
+    width: 40px;
+    height: 40px;
+    background-color: #6c757d;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%; /* Circular button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Slight shadow */
+    position: absolute;
+    top: 20px;
+    left: 10px; /* Adjust to keep on the left */
+    z-index: 1000;
+    transition: transform 0.3s;
+}
+
+.toggle-button:hover {
+    transform: scale(1.1);
+}
+
+/* Floating button styling for each category */
+.category-button {
+    width: 100px;
+    background-color: #6c757d;
+    color: white;
+    font-weight: 600;
+    border-radius: 25px; /* Rounded corners for floating look */
+    padding: 10px 0;
+    margin: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for floating effect */
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+    position: relative;
+    z-index: 1000;
+}
+
+.category-button:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Hide buttons when collapsed */
+.sidebar.collapsed .category-button {
+    display: none;
+}

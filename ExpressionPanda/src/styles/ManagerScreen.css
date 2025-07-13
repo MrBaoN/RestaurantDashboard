@@ -1,0 +1,41 @@
+.manager-screen {
+    background-color: #f4f4f4;
+}
+
+.background-container {
+    position: relative;
+    background-image: url('/path/to/your/background-image.png'); /* Update with the path to your image */
+    background-size: cover;
+    background-position: center;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    padding: 20px;
+    max-width: 600px;
+}
+
+.manager-button {
+    background-color: #6c757d;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.2em;
+}
+
+.manager-button:hover {
+    background-color: #5a6268;
+}
+
+h1 {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
