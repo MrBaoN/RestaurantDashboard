@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Col, Row, Card } from "react-bootstrap";
 import { useAuth } from "../components/AuthContext";
