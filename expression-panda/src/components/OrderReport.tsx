@@ -29,10 +29,7 @@ interface OrderReportModalProps {
  * @param {function} props.handleClose - Callback function to close the modal.
  * @returns {JSX.Element} The rendered OrderReportModal component.
  */
-const OrderReportModal: React.FC<OrderReportModalProps> = ({
-  show,
-  handleClose,
-}) => {
+const OrderReportModal: React.FC<OrderReportModalProps> = ({show, handleClose}) => {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
   const [orders, setOrders] = useState<Order[]>([]);
@@ -55,9 +52,9 @@ const OrderReportModal: React.FC<OrderReportModalProps> = ({
       setError("Please select both start and end dates.");
       return;
     }
-
+  
     const now = new Date();
-
+  
     // Validate dates
     if (startDate > now) {
       setError("Start date cannot be in the future.");
@@ -67,28 +64,25 @@ const OrderReportModal: React.FC<OrderReportModalProps> = ({
       setError("End date cannot be earlier than the start date.");
       return;
     }
-
+  
     try {
       setError(null); // Clear previous errors
-
+  
       // Check if the startDate and endDate are the same
       let params = {
         startDate: startDate.toISOString().split("T")[0],
         endDate: endDate.toISOString().split("T")[0],
       };
-
-      if (
-        startDate.toISOString().split("T")[0] ===
-        endDate.toISOString().split("T")[0]
-      ) {
+  
+      if (startDate.toISOString().split("T")[0] === endDate.toISOString().split("T")[0]) {
         params = {
           startDate: `${startDate.toISOString().split("T")[0]} 00:00:00`,
           endDate: `${endDate.toISOString().split("T")[0]} 23:59:59`,
         };
       }
-
+  
       const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND}/api/getRange`,
+        "https://project3-team3-rf8c.onrender.com/api/getRange",
         { params }
       );
       setOrders(response.data);
@@ -97,6 +91,8 @@ const OrderReportModal: React.FC<OrderReportModalProps> = ({
       setError("Failed to fetch orders. Please try again.");
     }
   };
+  
+  
 
   return (
     <Modal show={show} onHide={handleClose} size="lg" centered>

@@ -1,5 +1,3 @@
-// App.tsx
-
 import {
   BrowserRouter as Router,
   Routes,
@@ -16,12 +14,21 @@ import EmployeeManagement from "./pages/Employee";
 import { MenuAdjust } from "./pages/MenuAdjust";
 import Inventory from "./pages/Inventory";
 import { AuthProvider } from "./components/AuthContext";
-import { CartProvider } from "./components/CartContext";
 import ReportsPage from "./pages/Reports";
 import MenuBoard from "./pages/MenuBoard";
 
+/**
+ * Main application content and routing logic.
+ *
+ * - Renders the appropriate page components based on the current route.
+ * - Includes a Navbar across all pages, except those defined in `noNavbarPaths`.
+ * - Routes include Home, Menu, Kitchen, Manager, and more.
+ *
+ * @returns {JSX.Element} The rendered application routes wrapped with a conditional Navbar.
+ */
 const AppContent = () => {
   const location = useLocation();
+
   const noNavbarPaths = ["/kitchen", "/menu"];
 
   return (
@@ -44,13 +51,19 @@ const AppContent = () => {
   );
 };
 
+/**
+ * Root application component.
+ *
+ * - Wraps the application content in the `AuthProvider` to manage user authentication state.
+ * - Uses `Router` to enable client-side routing.
+ *
+ * @returns {JSX.Element} The root application wrapped with `AuthProvider` and `Router`.
+ */
 export const App = () => {
   return (
     <Router>
       <AuthProvider>
-        <CartProvider>
-          <AppContent />
-        </CartProvider>
+        <AppContent />
       </AuthProvider>
     </Router>
   );

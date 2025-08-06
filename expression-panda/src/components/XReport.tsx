@@ -44,7 +44,7 @@ const XReportModal: React.FC<XReportModalProps> = ({ show, handleClose }) => {
   const fetchXReport = async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND}/api/getXReport`
+        "https://project3-team3-rf8c.onrender.com/api/getXReport"
       );
       const transformedData = response.data.map((item: any) => ({
         salesHour: item.salesHour,
@@ -57,6 +57,7 @@ const XReportModal: React.FC<XReportModalProps> = ({ show, handleClose }) => {
       setError("Failed to fetch X Report. Please try again.");
     }
   };
+
 
   return (
     <Modal show={show} onHide={handleClose} onShow={fetchXReport}>

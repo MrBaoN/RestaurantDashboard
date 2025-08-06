@@ -83,7 +83,7 @@ const EmployeeManagement: React.FC = () => {
   async function fetchEmployees() {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND}/api/employees`
+        "https://project3-team3-rf8c.onrender.com/api/employees"
       );
       if (!response.ok) {
         throw new Error("Failed to fetch user data");
@@ -111,7 +111,7 @@ const EmployeeManagement: React.FC = () => {
   const handleAddEmployee = async () => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND}/api/add-employee`,
+        "https://project3-team3-rf8c.onrender.com/api/add-employee",
         {
           method: "POST",
           headers: {
@@ -149,7 +149,7 @@ const EmployeeManagement: React.FC = () => {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND}/api/update-employee`,
+        "https://project3-team3-rf8c.onrender.com/api/update-employee",
         {
           method: "PUT",
           headers: {

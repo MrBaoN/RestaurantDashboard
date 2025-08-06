@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Col, Row, Card } from "react-bootstrap";
 import { useAuth } from "../components/AuthContext";
@@ -70,7 +70,7 @@ const MenuBoard: FC = () => {
     async function getMenuItems() {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_BACKEND}/api/active-items`
+          "https://project3-team3-rf8c.onrender.com/api/active-items"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -152,7 +152,7 @@ const MenuBoard: FC = () => {
     async function fetchOrders() {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_BACKEND}/api/kitchenOrders?source=menu`
+          "https://project3-team3-rf8c.onrender.com/api/kitchenOrders?source=menu"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");

@@ -66,7 +66,7 @@ const Inventory: React.FC = () => {
   async function getInventory() {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND}/api/inventory`
+        "https://project3-team3-rf8c.onrender.com/api/inventory"
       );
       if (!response.ok) throw new Error("Network response was not ok");
 
@@ -170,7 +170,7 @@ const Inventory: React.FC = () => {
   async function updateInventory(item: InventoryItem) {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND}/api/update-inventory`,
+        "https://project3-team3-rf8c.onrender.com/api/update-inventory",
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -201,7 +201,7 @@ const Inventory: React.FC = () => {
   async function addInventory(item: InventoryItem) {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND}/api/add-inventory`,
+        "https://project3-team3-rf8c.onrender.com/api/add-inventory",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
