@@ -117,7 +117,7 @@ const CashierScreen: FC = () => {
    */
   async function getMenuItems() {
     return (
-      fetch("https://project3-team3-rf8c.onrender.com/api/active-items")
+      fetch("https://middleware-04w7.onrender.com/api/active-items")
         .then((response) => {
           if (!response.ok) {
             throw new Error("Network response was not ok");
@@ -236,7 +236,7 @@ const CashierScreen: FC = () => {
 
     try {
       const response = await fetch(
-        "https://project3-team3-rf8c.onrender.com/api/placeOrder",
+        "https://middleware-04w7.onrender.com/api/placeOrder",
         {
           method: "POST",
           headers: {

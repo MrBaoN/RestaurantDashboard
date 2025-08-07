@@ -68,7 +68,7 @@ const Kitchen = () => {
   const fetchOrders = async () => {
     try {
       const response = await fetch(
-        "https://project3-team3-rf8c.onrender.com/api/kitchenOrders?source=kitchen"
+        "https://middleware-04w7.onrender.com/api/kitchenOrders?source=kitchen"
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -99,7 +99,7 @@ const Kitchen = () => {
   const handleNextOrder = async () => {
     try {
       const response = await fetch(
-        "https://project3-team3-rf8c.onrender.com/api/kitchenNext",
+        "https://middleware-04w7.onrender.com/api/kitchenNext",
         {
           method: "PUT",
           headers: {

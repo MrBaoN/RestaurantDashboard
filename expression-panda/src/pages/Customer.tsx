@@ -99,7 +99,7 @@ const CashierScreen: FC = () => {
   useEffect(() => {
     async function getMenuItems() {
       const response = await fetch(
-        "https://project3-team3-rf8c.onrender.com/api/active-items"
+        "https://middleware-04w7.onrender.com/api/active-items"
       );
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
@@ -203,7 +203,7 @@ const CashierScreen: FC = () => {
     };
     try {
       const response = await fetch(
-        "https://project3-team3-rf8c.onrender.com/api/placeOrder",
+        "https://middleware-04w7.onrender.com/api/placeOrder",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

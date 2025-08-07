@@ -83,7 +83,7 @@ const EmployeeManagement: React.FC = () => {
   async function fetchEmployees() {
     try {
       const response = await fetch(
-        "https://project3-team3-rf8c.onrender.com/api/employees"
+        "https://middleware-04w7.onrender.com/api/employees"
       );
       if (!response.ok) {
         throw new Error("Failed to fetch user data");
@@ -111,7 +111,7 @@ const EmployeeManagement: React.FC = () => {
   const handleAddEmployee = async () => {
     try {
       const response = await fetch(
-        "https://project3-team3-rf8c.onrender.com/api/add-employee",
+        "https://middleware-04w7.onrender.com/api/add-employee",
         {
           method: "POST",
           headers: {
@@ -149,7 +149,7 @@ const EmployeeManagement: React.FC = () => {
 
     try {
       const response = await fetch(
-        "https://project3-team3-rf8c.onrender.com/api/update-employee",
+        "https://middleware-04w7.onrender.com/api/update-employee",
         {
           method: "PUT",
           headers: {

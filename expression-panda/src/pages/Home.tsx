@@ -53,7 +53,7 @@ export const Home = () => {
   async function getMenuItems() {
     try {
       const response = await fetch(
-        "https://project3-team3-rf8c.onrender.com/api/active-items"
+        "https://middleware-04w7.onrender.com/api/active-items"
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");

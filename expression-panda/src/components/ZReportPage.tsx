@@ -43,7 +43,7 @@ const ZReportModal: React.FC<ZReportModalProps> = ({ show, handleClose }) => {
    */
   const fetchZReport = async () => {
     try {
-      const response = await axios.get("https://project3-team3-rf8c.onrender.com/api/getZReport");
+      const response = await axios.get("https://middleware-04w7.onrender.com/api/getZReport");
       setZReportData(response.data);
       setError(null);
     } catch (err: any) {

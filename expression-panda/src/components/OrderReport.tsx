@@ -82,7 +82,7 @@ const OrderReportModal: React.FC<OrderReportModalProps> = ({show, handleClose}) 
       }
   
       const response = await axios.get(
-        "https://project3-team3-rf8c.onrender.com/api/getRange",
+        "https://middleware-04w7.onrender.com/api/getRange",
         { params }
       );
       setOrders(response.data);

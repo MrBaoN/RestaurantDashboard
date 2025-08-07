@@ -98,7 +98,7 @@ export const MenuAdjust = () => {
   async function getMenuItems() {
     try {
       const response = await fetch(
-        "https://project3-team3-rf8c.onrender.com/api/all-items"
+        "https://middleware-04w7.onrender.com/api/all-items"
       );
       if (!response.ok) throw new Error("Network response was not ok");
 
@@ -139,7 +139,7 @@ export const MenuAdjust = () => {
   async function getIngredients() {
     try {
       const response = await fetch(
-        "https://project3-team3-rf8c.onrender.com/api/inventory"
+        "https://middleware-04w7.onrender.com/api/inventory"
       );
       if (!response.ok) throw new Error("Network response was not ok");
 
@@ -171,7 +171,7 @@ export const MenuAdjust = () => {
     console.log("Payload being sent to the server:", addItem);
     try {
       const response = await fetch(
-        "https://project3-team3-rf8c.onrender.com/api/add-menu",
+        "https://middleware-04w7.onrender.com/api/add-menu",
         {
           method: "POST",
           headers: {
@@ -212,7 +212,7 @@ export const MenuAdjust = () => {
   async function editMenu(selectItem: MenuItem) {
     try {
       const response = await fetch(
-        "https://project3-team3-rf8c.onrender.com/api/update-menu",
+        "https://middleware-04w7.onrender.com/api/update-menu",
         {
           method: "PUT",
           headers: {

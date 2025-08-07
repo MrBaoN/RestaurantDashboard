@@ -44,7 +44,7 @@ const XReportModal: React.FC<XReportModalProps> = ({ show, handleClose }) => {
   const fetchXReport = async () => {
     try {
       const response = await axios.get(
-        "https://project3-team3-rf8c.onrender.com/api/getXReport"
+        "https://middleware-04w7.onrender.com/api/getXReport"
       );
       const transformedData = response.data.map((item: any) => ({
         salesHour: item.salesHour,

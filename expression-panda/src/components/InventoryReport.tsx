@@ -45,7 +45,7 @@ const InventoryReportModal: React.FC<InventoryReportModalProps> = ({ show, handl
         setError(""); // Clear previous errors
         try {
             const response = await axios.get(
-                "https://project3-team3-rf8c.onrender.com/api/getInventoryUsed",
+                "https://middleware-04w7.onrender.com/api/getInventoryUsed",
                 {
                     params: { startDate, endDate },
                 }

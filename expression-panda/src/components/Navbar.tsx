@@ -76,7 +76,7 @@ export const Navbar: React.FC = () => {
         const { latitude, longitude } = position.coords;
     
         // Fetch weather data for the user's location
-        const response = await fetch("https://project3-team3-rf8c.onrender.com/api/weather", {
+        const response = await fetch("https://middleware-04w7.onrender.com/api/weather", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -158,7 +158,7 @@ export const Navbar: React.FC = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://project3-team3-rf8c.onrender.com/api/login', {
+      const response = await fetch('https://middleware-04w7.onrender.com/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
