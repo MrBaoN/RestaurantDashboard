@@ -31,7 +31,6 @@ const pool = new Pool({
     rejectUnauthorized: false
   },
 });
-
 /**
  * Fetch orders for the kitchen or menu board.
  *
@@ -559,6 +558,76 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
+app.post("/api/google-login", async (req, res) => {
+  const { token } = req.body;
+
+  if (!token) {
+    return res.status(400).json({ error: "Missing token" });
+  }
+
+  try {
+    const googleRes = await fetch(`https://oauth2.googleapis.com/tokeninfo?id_token=${token}`);
+    if (!googleRes.ok) {
+      return res.status(401).json({ error: "Invalid token" });
+    }
+
+    const googleUser = await googleRes.json();
+    const client = await pool.connect();
+
+    try {
+      const checkUserQuery = `SELECT * FROM employees WHERE username = $1 AND is_active = true`;
+      const values = [googleUser.email];
+      const result = await client.query(checkUserQuery, values);
+
+      let employeeData;
+
+      if (result.rows.length > 0) {
+        const employee = result.rows[0];
+        employeeData = {
+          id: employee.employee_id,
+          firstName: employee.first_name,
+          lastName: employee.last_name,
+          isEmployee: employee.is_employee,
+          isManager: employee.is_manager,
+        };
+      } else {
+        const insertQuery = `
+          INSERT INTO employees (first_name, last_name, username, password_hash, is_manager, is_active, is_employee)
+          VALUES ($1, $2, $3, $4, false, true, false)
+          RETURNING employee_id
+        `;
+
+        const insertValues = [
+          googleUser.given_name,
+          googleUser.family_name,
+          googleUser.email,
+          null
+        ];
+
+        const insertResult = await client.query(insertQuery, insertValues);
+
+        employeeData = {
+          id: insertResult.rows[0].employee_id,
+          firstName: googleUser.given_name,
+          lastName: googleUser.family_name,
+          isEmployee: false,
+          isManager: false,
+        };
+      }
+
+      return res.status(200).json(employeeData);
+    } catch (error) {
+      console.error("DB error:", error);
+      res.status(500).json({ error: "Database error" });
+    } finally {
+      client.release();
+    }
+  } catch (err) {
+    console.error("Google login error:", err);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 /**
  * Place a new order.
  *
@@ -853,7 +922,7 @@ app.post("/api/add-inventory", async (req, res) => {
  */
 app.get("/api/employees", async (req, res) => {
   const query_res = await pool.query(
-    "SELECT employee_id, first_name, last_name, username, is_manager, is_active FROM employees"
+    "SELECT employee_id, first_name, last_name, username, is_manager, is_active FROM employees WHERE is_employee = true"
   );
 
   const employees = query_res.rows.map((row) => ({
@@ -889,7 +958,7 @@ app.post("/api/add-employee", async (req, res) => {
     await client.query("BEGIN");
 
     const addEmployee =
-      "INSERT INTO employees (first_name, last_name, username, password_hash, is_manager, is_active) VALUES ($1, $2, $3, $4, $5, $6)";
+      "INSERT INTO employees (first_name, last_name, username, password_hash, is_manager, is_active, is_employee) VALUES ($1, $2, $3, $4, $5, $6, true)";
     const parameter = [
       String(employee.firstName),
       String(employee.lastName),

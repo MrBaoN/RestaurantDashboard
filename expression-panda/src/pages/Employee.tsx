@@ -46,6 +46,7 @@ const EmployeeManagement: React.FC = () => {
     password: "",
     isManager: false,
     isActive: true,
+    isEmployee: true,
   });
   const navigate = useNavigate();
   const { user } = useAuth();

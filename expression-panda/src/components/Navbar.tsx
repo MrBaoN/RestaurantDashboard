@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from './AuthContext';
 import { Navbar as BootstrapNavbar, Nav, NavDropdown, Container, Button, Modal } from 'react-bootstrap';
 import { GoogleLogin } from '@react-oauth/google';
-import {jwtDecode} from 'jwt-decode';
 
 interface WeatherData {
   temperature: number;
@@ -189,20 +188,22 @@ export const Navbar: React.FC = () => {
    * @param {any} response - The response object returned by the Google Login API.
    * @returns {void}
    */
-  const handleGoogleLoginSuccess = (response: any) => {
-    console.log("Google Login Success:", response);
-    const userData: any = jwtDecode(response.credential);
-    const employeeData = {
-      id: null,
-      firstName: userData.given_name,
-      lastName: userData.family_name,
-      isEmployee: false,
-      isManager: false,
-    };
+  const handleGoogleLoginSuccess = async (response: any) => {
+  try {
+    const res = await fetch("https://middleware-04w7.onrender.com/api/google-login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token: response.credential }),
+    });
 
-    login(employeeData);
+    const data = await res.json();
+    login(data);
     closeLoginModal();
-  };
+  } catch (error) {
+    console.error("Backend verification failed:", error);
+    setError("Google login failed. Please try again.");
+  }
+};
 
   /**
    * Handles a failed Google login attempt.
