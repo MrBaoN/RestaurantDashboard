@@ -291,7 +291,7 @@ export const Navbar: React.FC = () => {
         </Modal.Header>
         <Modal.Body>
           <div>
-            <h5>Employee Login</h5>
+            <h5>Login</h5>
             <form onSubmit={handleLoginSubmit}>
               <div className="form-group">
                 <label htmlFor="username">Username</label>
@@ -323,7 +323,7 @@ export const Navbar: React.FC = () => {
 
             <hr />
 
-            <h5>Customer Login</h5>
+            <h5>Google Login</h5>
             <div className="mt-3">
               <GoogleLogin
                 onSuccess={handleGoogleLoginSuccess}
