@@ -656,7 +656,7 @@ app.post("/api/placeOrder", async (req, res) => {
         "SELECT * FROM orders WHERE order_status = 'building'"
       );
       const employeeId =
-        order.emID && !isNaN(Number(order.emID)) ? Number(order.emID) : null;
+        order.emID;
 
       const resOrder = await client.query(addOrderStatement, [
         Number(employeeId),

@@ -199,7 +199,7 @@ const CashierScreen: FC = () => {
     const order: Order = {
       itemAmount: selectedItems,
       total,
-      emID: user?.id as number,
+      emID: user.id as number,
     };
     try {
       const response = await fetch(
@@ -208,7 +208,6 @@ const CashierScreen: FC = () => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(order),
-          // yes
         }
       );
       const content = await response.json();
