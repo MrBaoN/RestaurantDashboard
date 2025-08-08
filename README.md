@@ -8,6 +8,7 @@
 ### Fully-functional Restaurant Webapp
 A better alternative to Panda Express! (just a joke please don't sue)
 
+<sub>Login as manager with username`a` and password `a`</sub>
 ## Features
   <div align="left">
   
