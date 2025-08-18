@@ -2,6 +2,7 @@ import { ChangeEvent, FC, useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../index.css";
 import { useAuth } from "../components/AuthContext";
+import { MIDDLEWARE_URI } from "../config";
 import {
   Container,
   Row,
@@ -99,7 +100,7 @@ const CashierScreen: FC = () => {
   useEffect(() => {
     async function getMenuItems() {
       const response = await fetch(
-        "https://middleware-04w7.onrender.com/api/active-items"
+        `${MIDDLEWARE_URI}/api/active-items`
       );
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
@@ -203,7 +204,7 @@ const CashierScreen: FC = () => {
     };
     try {
       const response = await fetch(
-        "https://middleware-04w7.onrender.com/api/placeOrder",
+        `${MIDDLEWARE_URI}/api/placeOrder`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

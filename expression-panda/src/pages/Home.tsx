@@ -2,6 +2,7 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Translation } from "../components/Translation";
+import { MIDDLEWARE_URI } from "../config";
 
 interface MenuItem {
   id: string;
@@ -53,7 +54,7 @@ export const Home = () => {
   async function getMenuItems() {
     try {
       const response = await fetch(
-        "https://middleware-04w7.onrender.com/api/active-items"
+        `${MIDDLEWARE_URI}/api/active-items`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../components/AuthContext";
 import "./kitchenScreen.css";
-
+import { MIDDLEWARE_URI } from "../config";
 interface Ingredients {
   ingredientName: string;
   amount: number;
@@ -68,7 +68,7 @@ const Kitchen = () => {
   const fetchOrders = async () => {
     try {
       const response = await fetch(
-        "https://middleware-04w7.onrender.com/api/kitchenOrders?source=kitchen"
+        `${MIDDLEWARE_URI}/api/kitchenOrders?source=kitchen`
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -99,7 +99,7 @@ const Kitchen = () => {
   const handleNextOrder = async () => {
     try {
       const response = await fetch(
-        "https://middleware-04w7.onrender.com/api/kitchenNext",
+        `${MIDDLEWARE_URI}/api/kitchenNext`,
         {
           method: "PUT",
           headers: {

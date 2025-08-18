@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Col, Row, Card } from "react-bootstrap";
 import { useAuth } from "../components/AuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
+import { MIDDLEWARE_URI } from "../config";
 
 interface MenuItem {
   id: string;
@@ -70,7 +71,7 @@ const MenuBoard: FC = () => {
     async function getMenuItems() {
       try {
         const response = await fetch(
-          "https://middleware-04w7.onrender.com/api/active-items"
+          `${MIDDLEWARE_URI}/api/active-items`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -152,7 +153,7 @@ const MenuBoard: FC = () => {
     async function fetchOrders() {
       try {
         const response = await fetch(
-          "https://middleware-04w7.onrender.com/api/kitchenOrders?source=menu"
+          `${MIDDLEWARE_URI}/api/kitchenOrders?source=menu`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");

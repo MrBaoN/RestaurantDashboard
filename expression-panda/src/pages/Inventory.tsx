@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Col, Form } from "react-bootstrap";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useAuth } from "../components/AuthContext";
+import { MIDDLEWARE_URI } from "../config";
 interface InventoryItem {
   id?: number;
   name: string;
@@ -66,7 +67,7 @@ const Inventory: React.FC = () => {
   async function getInventory() {
     try {
       const response = await fetch(
-        "https://middleware-04w7.onrender.com/api/inventory"
+        `${MIDDLEWARE_URI}/api/inventory`
       );
       if (!response.ok) throw new Error("Network response was not ok");
 
@@ -170,7 +171,7 @@ const Inventory: React.FC = () => {
   async function updateInventory(item: InventoryItem) {
     try {
       const response = await fetch(
-        "https://middleware-04w7.onrender.com/api/update-inventory",
+        `${MIDDLEWARE_URI}/api/update-inventory`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -201,7 +202,7 @@ const Inventory: React.FC = () => {
   async function addInventory(item: InventoryItem) {
     try {
       const response = await fetch(
-        "https://middleware-04w7.onrender.com/api/add-inventory",
+        `${MIDDLEWARE_URI}/api/add-inventory`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

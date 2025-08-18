@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Button, Col, Row, Form } from "react-bootstrap";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useAuth } from "../components/AuthContext";
+import { MIDDLEWARE_URI } from "../config";
 
 interface MenuItem {
   id: string;
@@ -98,7 +99,7 @@ export const MenuAdjust = () => {
   async function getMenuItems() {
     try {
       const response = await fetch(
-        "https://middleware-04w7.onrender.com/api/all-items"
+        `${MIDDLEWARE_URI}/api/all-items`
       );
       if (!response.ok) throw new Error("Network response was not ok");
 
@@ -139,7 +140,7 @@ export const MenuAdjust = () => {
   async function getIngredients() {
     try {
       const response = await fetch(
-        "https://middleware-04w7.onrender.com/api/inventory"
+        `${MIDDLEWARE_URI}/api/inventory`
       );
       if (!response.ok) throw new Error("Network response was not ok");
 
@@ -171,7 +172,7 @@ export const MenuAdjust = () => {
     console.log("Payload being sent to the server:", addItem);
     try {
       const response = await fetch(
-        "https://middleware-04w7.onrender.com/api/add-menu",
+        `${MIDDLEWARE_URI}/api/add-menu`,
         {
           method: "POST",
           headers: {
@@ -212,7 +213,7 @@ export const MenuAdjust = () => {
   async function editMenu(selectItem: MenuItem) {
     try {
       const response = await fetch(
-        "https://middleware-04w7.onrender.com/api/update-menu",
+        `${MIDDLEWARE_URI}/api/update-menu`,
         {
           method: "PUT",
           headers: {
