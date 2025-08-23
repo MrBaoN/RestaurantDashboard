@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button, Table } from "react-bootstrap";
 import axios from "axios";
+import { MIDDLEWARE_URI } from "../config";
 
 interface XReportModalProps {
   show: boolean;
@@ -44,7 +45,7 @@ const XReportModal: React.FC<XReportModalProps> = ({ show, handleClose }) => {
   const fetchXReport = async () => {
     try {
       const response = await axios.get(
-        "https://middleware-04w7.onrender.com/api/getXReport"
+        `${MIDDLEWARE_URI}/api/getXReport`
       );
       const transformedData = response.data.map((item: any) => ({
         salesHour: item.salesHour,

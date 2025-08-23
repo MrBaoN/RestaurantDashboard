@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Table } from "react-bootstrap";
 import axios from "axios";
+import { MIDDLEWARE_URI } from "../config";
 
 interface InventoryItem {
     itemName: string;
@@ -45,7 +46,7 @@ const InventoryReportModal: React.FC<InventoryReportModalProps> = ({ show, handl
         setError(""); // Clear previous errors
         try {
             const response = await axios.get(
-                "https://middleware-04w7.onrender.com/api/getInventoryUsed",
+                `${MIDDLEWARE_URI}/api/getInventoryUsed`,
                 {
                     params: { startDate, endDate },
                 }

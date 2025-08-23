@@ -3,6 +3,7 @@ import { Modal, Button, Form, Table } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import { MIDDLEWARE_URI } from "../config";
 
 interface Order {
   orderID: number;
@@ -82,7 +83,7 @@ const OrderReportModal: React.FC<OrderReportModalProps> = ({show, handleClose}) 
       }
   
       const response = await axios.get(
-        "https://middleware-04w7.onrender.com/api/getRange",
+        `${MIDDLEWARE_URI}/api/getRange`,
         { params }
       );
       setOrders(response.data);

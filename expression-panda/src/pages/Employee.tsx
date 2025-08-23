@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../components/AuthContext";
+import { MIDDLEWARE_URI } from "../config";
 interface Employee {
   password: string;
   id: number;
@@ -84,7 +85,7 @@ const EmployeeManagement: React.FC = () => {
   async function fetchEmployees() {
     try {
       const response = await fetch(
-        "https://middleware-04w7.onrender.com/api/employees"
+        `${MIDDLEWARE_URI}/api/employees`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch user data");
@@ -112,7 +113,7 @@ const EmployeeManagement: React.FC = () => {
   const handleAddEmployee = async () => {
     try {
       const response = await fetch(
-        "https://middleware-04w7.onrender.com/api/add-employee",
+        `${MIDDLEWARE_URI}/api/add-employee`,
         {
           method: "POST",
           headers: {
@@ -150,7 +151,7 @@ const EmployeeManagement: React.FC = () => {
 
     try {
       const response = await fetch(
-        "https://middleware-04w7.onrender.com/api/update-employee",
+        `${MIDDLEWARE_URI}/api/update-employee`,
         {
           method: "PUT",
           headers: {

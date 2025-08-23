@@ -31,6 +31,11 @@ A better alternative to Panda Express! (just a joke please don't sue)
     
   </div>
 
+## Walkthrough
+<div align="center">
+  <img src="/expressionPandaGallery/expressionPanda.gif" alt="Walkthrough demo" title="Walkthrough demo" width="500"/>
+</div>
+
 ## Gallery
   <div align="center">
     <img src="/expressionPandaGallery/expressionPandaLanding.jpg" alt="Landing Page" title="Landing Page" width="500"/>

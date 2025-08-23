@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Table } from "react-bootstrap";
 import axios from "axios";
+import { MIDDLEWARE_URI } from "../config";
 
 interface ZReportItem {
   date: string;
@@ -43,7 +44,7 @@ const ZReportModal: React.FC<ZReportModalProps> = ({ show, handleClose }) => {
    */
   const fetchZReport = async () => {
     try {
-      const response = await axios.get("https://middleware-04w7.onrender.com/api/getZReport");
+      const response = await axios.get(`${MIDDLEWARE_URI}/api/getZReport`);
       setZReportData(response.data);
       setError(null);
     } catch (err: any) {
