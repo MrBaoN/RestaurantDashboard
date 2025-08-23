@@ -291,7 +291,7 @@ export const Navbar: React.FC = () => {
         </Modal.Header>
         <Modal.Body>
           <div>
-            <h5>Login</h5>
+            <h5>Login (manager login is a, a)</h5>
             <form onSubmit={handleLoginSubmit}>
               <div className="form-group">
                 <label htmlFor="username">Username</label>
